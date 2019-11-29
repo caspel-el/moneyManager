@@ -47,7 +47,7 @@ namespace MoneyMenager
                     ShowList();
                     break;
                 case "2":
-                    ShowRaport();
+                    ShowRaport(); 
                     break;
                 case "3":
                     AddOutcome();
