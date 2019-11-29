@@ -10,10 +10,16 @@ namespace MoneyMenager
 {
     class Program
     {
-        static File _file;  
+        //static File _file;
+        static IReader _reader;
+        static IWriter _writer;
+        string path = $@"d:\test.txt";
         static void Main(string[] args)
         {
-            _file = new File();
+            //_file = new File();
+            _reader = new Reader($@"d:\database.txt");
+            _writer = new Writer($@"d:\database.txt");
+
             string selected= "";
 
             do
@@ -65,7 +71,8 @@ namespace MoneyMenager
         private static void ShowList()
         {
             Console.Clear();
-            List list = new List(_file);
+            //List list = new List(_file);
+            List list = new List(_reader);
             Console.WriteLine("Wszystkie pozycje:");
             list.DispalList();
             Console.ReadKey();
@@ -77,7 +84,8 @@ namespace MoneyMenager
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
 
-            Summary report = new Summary(_file);
+            //Summary report = new Summary(_file);
+            Summary report = new Summary(_reader);
             report.DisplayRaport(year, month);
 
             Console.ReadKey();
@@ -100,7 +108,8 @@ namespace MoneyMenager
             value = Console.ReadLine();
             DateTime date = DateTime.Parse(value);
 
-            Service service = new Service(_file, _file);
+            //Service service = new Service(_file, _file);
+            Service service = new Service(_reader, _writer);
             service.OutOutcome(amount, name, date);
 
 
@@ -125,8 +134,11 @@ namespace MoneyMenager
             value = Console.ReadLine();
             DateTime date = DateTime.Parse(value);
 
-            Service service = new Service(_file, _file);
+            //Service service = new Service(_file, _file);
+            Service service = new Service(_reader, _writer);
             service.AddIncome(amount, name, date);
+
+            
 
 
             Console.ReadKey();
@@ -140,7 +152,7 @@ namespace MoneyMenager
             string value = Console.ReadLine();
             int id = int.Parse(value);
 
-            Service service = new Service(_file, _file);
+            Service service = new Service(_reader, _writer);
             service.RemoveById(id);
 
         }

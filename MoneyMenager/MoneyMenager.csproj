@@ -46,6 +46,8 @@
     <Compile Include="Db\File.cs" />
     <Compile Include="Db\IReader.cs" />
     <Compile Include="Db\IWriter.cs" />
+    <Compile Include="Db\Reader.cs" />
+    <Compile Include="Db\Writer.cs" />
     <Compile Include="Items\Income.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemType.cs" />

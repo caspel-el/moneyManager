@@ -10,11 +10,13 @@ namespace MoneyMenager.Statistics
 {
     class Summary
     {
-        private IReader _file;
+        //private IReader _file;
+        private IReader _reader;
 
         public Summary(IReader file)
         {
-            _file = file;
+            //_file = file;
+            _reader = file;
             
         }
         private decimal SumIncomes (IEnumerable<Item> list)
@@ -49,7 +51,8 @@ namespace MoneyMenager.Statistics
         }
         private IEnumerable<Item> GetItems(int year, int month)
         {
-            IEnumerable<Item> list = _file.ReadAll();
+            //IEnumerable<Item> list = _file.ReadAll();
+            IEnumerable<Item> list = _reader.ReadAll();
             List<Item> reportList = new List<Item>();
             foreach (Item item in list)
             {
